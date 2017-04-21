@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	@if (count($errors)>0)
+	<div class="alert alert-danger">
+	<ul>
+	@foreach($errors->all()as $error)
+	<li>{{$error}}</li>
+	@endforeach
+	</ul>
+	</div>
+	@endif
 	<title>@yield('page_title','Halaman Awal') | Laboratorium Pemrograman FW</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('component/bootstrap/dist/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('component/font-awesome/css/font-awesome.min.css')}}">
@@ -72,6 +81,7 @@
 				{{Session::get('informasi')}}
 									</div>
 							@endif
+
 							@yield('container')
 					</div>
 					<nav class="navbar navbar-default navbar-fixed-bottom">
